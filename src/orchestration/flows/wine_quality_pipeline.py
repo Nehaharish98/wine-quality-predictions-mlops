@@ -29,4 +29,4 @@ def wine_quality_pipeline(
     params = {"max_iter": 1000}
     log_to_mlflow(model, metrics, params, model_name="LogisticRegression")
 
-    print(f"Pipeline completed. Accuracy={acc:.4f}, AUC={auc:.4f}")
+    print(f"Pipeline completed. Accuracy={acc:.4f}, AUC={auc:.4f}") 
