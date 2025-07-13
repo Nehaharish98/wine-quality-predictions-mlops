@@ -9,13 +9,5 @@ prefect
 numpy
 matplotlib
 scipy
-joblib
-tqdm
-lightgbm
-tensorflow
-keras
-torch
-torchvision
-transformers
-pytorch-lightning
 fastapi
+uvicorn

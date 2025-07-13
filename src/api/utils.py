@@ -10,3 +10,6 @@ def predict(model_bundle, input_dict):
     X = dv.transform([input_dict])
     pred = model.predict(X)[0]
     return
+
+def predict(model, features: dict):
+    return model.predict([features])[0]
