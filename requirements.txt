@@ -10,4 +10,4 @@ numpy
 matplotlib
 scipy
 fastapi
-uvicorn
+gunicorn 

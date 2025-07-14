@@ -1,20 +1,20 @@
-# Start from slim Python image
-FROM python:3.10-slim
+FROM python:3.9-slim-buster
 
-# Create workdir
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
 WORKDIR /app
 
-# Copy requirements
 COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip install mlflow==2.13.0 # Ensure MLflow is installed here
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy entire repo into container
 COPY . .
 
-# Expose port
-EXPOSE 8000
+RUN mkdir -p mlruns \
+    && touch mlflow.db
 
-# Run API
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 5000 
+EXPOSE 5001 
+
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "src.api.main:app"]

@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mlops_app: # This is the ONLY service now
+    build: .
+    ports:
+      - "5000:5000" # Expose MLflow UI (if running inside this container) on host port 5000
+      - "8000:5001" # Map host port 8000 to Flask app's port 5001 (inside container)
+    volumes:
+      - ./src:/app/src
+      - ./data:/app/data
+      - ./mlflow.db:/app/mlflow.db
+      - ./mlruns:/app/mlruns
+    restart: unless-stopped

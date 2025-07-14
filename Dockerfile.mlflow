@@ -1,0 +1,12 @@
+# Start from a lightweight Python image
+FROM python:3.9-slim-buster
+
+# Install MLflow
+RUN pip install mlflow==2.12.1
+
+WORKDIR /mlflow
+
+# Expose MLflow UI port
+EXPOSE 5000
+
+ENTRYPOINT ["mlflow"]

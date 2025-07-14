@@ -35,5 +35,5 @@ if __name__ == "__main__":
         name="monthly_quality_check",
         cron="0 0 1 * *",
         tags=["monthly", "wine-quality"],
-        work_pool_name="my-local-pool",
+        #work_pool_name="my-local-pool",
     )
